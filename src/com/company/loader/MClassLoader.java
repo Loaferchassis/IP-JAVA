@@ -7,16 +7,17 @@ import java.util.jar.JarFile;
 
 public class MClassLoader extends ClassLoader {
 
-    private static final String PATH_JAR = "C:\\Users\\Alexander\\IdeaProjects\\Lab01_Java\\out\\artifacts\\Lab01_Java_jar";
+    private static final String PATH_JAR = "C:\\Users\\Alexander\\Desktop\\sum\\Lab01_Java.jar";
 
     @Override
     protected Class<?> findClass(String name) throws ClassNotFoundException {
         try {
             JarFile jarFile = new JarFile(PATH_JAR);
-            JarEntry jarEntry =
-                    new JarEntry(name.replace(".", "/") + ".class");
+            JarEntry jarEntry = jarFile.getJarEntry(
+                    name.replace(".", "/") + ".class");
             InputStream inputStream = jarFile.getInputStream(jarEntry);
             byte[] classBytes = new byte[(int) jarEntry.getSize()];
+
             if (inputStream.read(classBytes) != classBytes.length)
                 throw new IOException("No class.");
 
@@ -24,7 +25,6 @@ public class MClassLoader extends ClassLoader {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
         return super.findClass(name);
     }
 }

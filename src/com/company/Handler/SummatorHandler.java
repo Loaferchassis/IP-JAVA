@@ -6,12 +6,13 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
 public class SummatorHandler implements InvocationHandler {
+
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         MClassLoader classLoader = new MClassLoader();
         Object summator = null;
         try {
-            summator= classLoader
+            summator = classLoader
                     .loadClass("com.company.Summator")
                     .newInstance();
         } catch (InstantiationException e) {
