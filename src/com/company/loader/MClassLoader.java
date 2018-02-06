@@ -7,7 +7,11 @@ import java.util.jar.JarFile;
 
 public class MClassLoader extends ClassLoader {
 
-    private static final String PATH_JAR = "C:\\Users\\Alexander\\Desktop\\sum\\Lab01_Java.jar";
+    /**
+     * УКАЖИТЕ ПУТЬ К JAR ФАЙЛУ ЗДЕСЬ!
+     * Файл находится в папке SUM, которая находится в корневой папке проекта.
+     */
+    private static final String PATH_JAR = "Lab01_Java\\sum\\Lab01_Java.jar";
 
     @Override
     protected Class<?> findClass(String name) throws ClassNotFoundException {
