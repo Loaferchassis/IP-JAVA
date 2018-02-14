@@ -22,7 +22,6 @@ public class Main {
         File directory = new File("Files/");
         File[] files = directory.listFiles();
 
-
         for (int i = 0; i < files.length; i++) {
             final File f = files[i];
             final int num = i;
